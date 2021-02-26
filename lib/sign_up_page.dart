@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'auth_credentials.dart';
 
 class SignUpPage extends StatefulWidget {
-
   final ValueChanged<SignUpCredentials> didProvideCredentials;
 
   final VoidCallback shouldShowLogin;
 
   SignUpPage({Key key, this.didProvideCredentials, this.shouldShowLogin})
       : super(key: key);
+
   //SignUpPage({Key key, this.shouldShowLogin}) : super(key: key);
 
   @override
@@ -49,14 +49,14 @@ class _SignUpPageState extends State<SignUpPage> {
         TextField(
           controller: _usernameController,
           decoration:
-          InputDecoration(icon: Icon(Icons.person), labelText: 'Username'),
+              InputDecoration(icon: Icon(Icons.person), labelText: 'Username'),
         ),
 
         // Email TextField
         TextField(
           controller: _emailController,
           decoration:
-          InputDecoration(icon: Icon(Icons.mail), labelText: 'Email'),
+              InputDecoration(icon: Icon(Icons.mail), labelText: 'Email'),
         ),
 
         // Password TextField
@@ -85,12 +85,8 @@ class _SignUpPageState extends State<SignUpPage> {
     print('username: $username');
     print('email: $email');
     print('password: $password');
-    final credentials = SignUpCredentials(
-        username: username,
-        email: email,
-        password: password
-    );
+    final credentials =
+        SignUpCredentials(username: username, email: email, password: password);
     widget.didProvideCredentials(credentials);
-
   }
 }

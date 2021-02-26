@@ -1,1 +1,10 @@
-{}
+{
+	"auth": {
+		"amplifydemob427d504": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

@@ -1,6 +1,8 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_core/amplify_core.dart';
 import 'package:amplify_demo/verification_page.dart';
 import 'package:flutter/material.dart';
-
+import 'amplifyconfiguration.dart';
 import 'auth_service.dart';
 import 'camera_flow.dart';
 import 'login_page.dart';
@@ -17,12 +19,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _amplify = Amplify();
+
   final _authService = AuthService();
 
   @override
   void initState() {
     super.initState();
-    _authService.showLogin();
+    _configureAmplify();
+    _authService.checkAuthStatus();
   }
 
   @override
@@ -81,7 +86,6 @@ class _MyAppState extends State<MyApp> {
               );
             }
           }),
-
       // home: Navigator(
       //     pages: [
       //     MaterialPage(builder:(context) => LoginPage()),
@@ -89,5 +93,15 @@ class _MyAppState extends State<MyApp> {
       //
       //             onPopPage: (route, result) => route.didPop(result),
     );
+  }
+
+  void _configureAmplify() async {
+    _amplify.addPlugin(authPlugins: [AmplifyAuthCognito()]);
+    try {
+      await _amplify.configure(amplifyconfig);
+      print('Successfully configured Amplify 🎉');
+    } catch (e) {
+      print(e);
+    }
   }
 }
