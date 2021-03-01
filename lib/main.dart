@@ -105,3 +105,13 @@ class _MyAppState extends State<MyApp> {
     }
   }
 }
+
+class Amplify {
+  static var Auth;
+
+  configure(String amplifyconfig) {}
+
+  void addPlugin({List<AmplifyAuthCognito> authPlugins}) {
+
+  }
+}
